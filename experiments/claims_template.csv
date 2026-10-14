@@ -1,0 +1,20 @@
+# Published pairwise claims to audit.
+#
+# THIS FILE CONTAINS NO REAL DATA. The two rows below are worked examples with
+# invented numbers, marked EXAMPLE, so you can see the column format and run
+# the audit end to end. Delete them before you report anything.
+#
+# How to fill it in: open a technical report or a leaderboard snapshot, find a
+# table where two models are compared on one benchmark, and transcribe the two
+# accuracies, the number of items actually used, and a citation precise enough
+# that someone else can find the same table. If the report does not say how
+# many items it used, that is itself a finding: record n_items as blank and
+# note it.
+#
+# discordance: leave blank unless you have MEASURED it by running both models
+# yourself. Blank rows fall back to the assumed value, and the audit reports a
+# sensitivity curve across plausible values so a reviewer can see how much the
+# conclusion depends on that assumption.
+claim_id,source_name,citation,benchmark,n_items,model_a,model_b,reported_acc_a,reported_acc_b,discordance
+EXAMPLE-1,EXAMPLE not real data,"EXAMPLE, replace with a real citation",MMLU,14042,Model-A-3B,Model-B-3B,62.4,61.5,
+EXAMPLE-2,EXAMPLE not real data,"EXAMPLE, replace with a real citation",ARC-Challenge,1172,Model-A-3B,Model-C-1B,78.1,74.9,

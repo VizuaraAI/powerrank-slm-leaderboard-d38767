@@ -1,0 +1,24 @@
+# Core analysis. These five carry the statistics and are all you need to run
+# `powerrank power`, which is where you should start.
+numpy>=2.0
+scipy>=1.14
+pandas>=2.2
+pyarrow>=16.0
+PyYAML>=6.0
+
+# Evaluation. Needed once you start running models.
+torch>=2.4
+transformers>=4.44
+datasets>=3.0
+accelerate>=0.34
+sentencepiece>=0.2
+protobuf>=4.25
+
+# Plotting the figures in the paper.
+matplotlib>=3.9
+
+# Optional, for the mixed-effects upgrade path in variance.py
+statsmodels>=0.14
+
+# Tests
+pytest>=8.0

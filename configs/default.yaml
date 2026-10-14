@@ -1,0 +1,43 @@
+# POWERRANK default configuration.
+#
+# The numbers under `power:` are the ones that decide how big your evaluation
+# has to be. Treat `discordance` as a placeholder until you have measured it
+# from your own runs: it is the single most influential input, and assuming it
+# is exactly the shortcut this project exists to criticise.
+
+power:
+  # Fraction of items on which two models disagree. 0.20 is a plausible
+  # starting value for two closely matched SLMs and gives ~15,700 items for a
+  # one-point gap. MEASURE THIS and replace it (powerrank board prints it).
+  discordance: 0.20
+  # Pooled accuracy, used only by the unpaired comparison.
+  p_bar: 0.60
+  alpha: 0.05
+  power: 0.80
+  # False discovery rate across all 190 pairwise comparisons.
+  fdr: 0.05
+
+itembank:
+  out: data/bank.parquet
+  dedup: true
+  # null means "take everything"; set a small number for a fast smoke run.
+  max_per_source: null
+
+evaluate:
+  out: runs/default
+  # Start with three templates. Add the remaining two once a three-template
+  # run completes end to end; the prompt axis is where cost multiplies.
+  templates: [plain, instructed, qa_pair]
+  # Log-likelihood scoring is deterministic, so extra seeds only buy you
+  # something on the generative subset or at temperature > 0.
+  seeds: [0]
+  temperature: 0.0
+  dtype: bfloat16
+  max_new_tokens: 256
+  # Resume skips (model, prompt, seed) shards that already exist on disk.
+  resume: true
+
+audit:
+  claims: experiments/claims_template.csv
+  # Report the audit across this range rather than at a single value.
+  sensitivity: [0.10, 0.15, 0.20, 0.25, 0.30]
